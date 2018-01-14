@@ -43,7 +43,6 @@ def aboutsp():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first() #First() as the username will be unique therefore only one result shall be given.
         if user:
@@ -67,9 +66,6 @@ def signup():
 
     return render_template('signup.html', form=form)
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
 
 if __name__ == '__main__':
     app.run()
